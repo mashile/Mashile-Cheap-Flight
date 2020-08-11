@@ -1,0 +1,14 @@
+/* Add application styles & imports to this file! */
+/*https://www.wallpapersin4k.org/wp-content/uploads/2017/04/Airplane-Full-HD-Wallpaper-9.jpg*/
+
+@import url("https://fonts.googleapis.com/css?family=Poppins|Nunito");
+@import "~nouislider/distribute/nouislider.min.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+body {
+  background-image: url("https://assets.wallpapersin4k.org/uploads/2017/04/Airplane-Wallpaper-Full-HD.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  font-family: 'Nunito', sans-serif;
+}

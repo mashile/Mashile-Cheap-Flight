@@ -1,0 +1,48 @@
+<h3 style="color:whitesmoke; text-align:center">
+	Search Results</h3>
+<hr/>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="table-resposive">
+			<table class="table table-striped">
+				<tbody>
+					<tr *ngIf="!(resultArr?.length > 0); else flightList">
+						<h3 style="color:red; text-align:center"></h3>
+					</tr>
+					<!-- Loop through input array -->
+					<ng-template #flightList>
+						<tr *ngFor="let result of resultArr; let i = index">
+							<div id="fltRes">
+								<td class="col-toDetails">
+									<!-- Onward flight details -->
+									{{result?.flight1?.FlightCode}}
+									<br> {{result?.flight1?.OriginDestination.Origin}} > {{result?.flight1?.OriginDestination.Destination}}
+									<br> Depart: {{result?.flight1?.OriginDestination.DeptDate | date:'shortTime'}}
+									<br> Arrive: {{result?.flight1?.OriginDestination.ArrDate | date:'shortTime'}}
+									<br> Fare: {{result?.flight1?.FareDetails | currency:'R'}}
+								</td>
+								<!-- Return flight details -->
+								<td *ngIf="tripType" class="col-froDetails">
+									{{result?.flight2?.FlightCode}}
+									<br> {{result?.flight2?.OriginDestination.Origin}} > {{result?.flight2?.OriginDestination.Destination}}
+									<br> Depart: {{result?.flight2?.OriginDestination.DeptDate | date:'shortTime'}}
+									<br> Arrive: {{result?.flight2?.OriginDestination.ArrDate | date:'shortTime'}}
+									<br> Fare: {{result?.flight2?.FareDetails | currency:'R'}}
+								</td>
+								<td class="col-bookButton">
+									<!-- Fare details -->
+									<span *ngIf="tripType; else ow">TOTAL FARE: {{result?.flight1?.FareDetails + result?.flight2?.FareDetails | currency:'R'}}</span>
+									<ng-template #ow>
+										<span>TOTAL FARE: {{result?.flight1?.FareDetails | currency:'R'}}</span>
+									</ng-template>
+                  <br>
+									<button class="btn btn-primary">Book</button>
+								</td>
+							</div>
+						</tr>
+					</ng-template>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
